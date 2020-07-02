@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.184" />
 
     <EditText
-        android:id="@+id/boxEmail3"
+        android:id="@+id/boxEmailCadastro"
         android:layout_width="290dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
@@ -39,16 +39,17 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintVertical_bias="0.49"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/boxEmail5"
+        android:id="@+id/boxIdade"
         android:layout_width="70dp"
         android:layout_height="43dp"
         android:background="#00FFFFFF"
         android:ems="10"
         android:fontFamily="sans-serif-condensed-medium"
-        android:inputType="textWebEmailAddress"
+        android:inputType="number"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -205,13 +206,13 @@
         app:layout_constraintVertical_bias="0.341" />
 
     <EditText
-        android:id="@+id/boxEmail"
+        android:id="@+id/boxEmailLogin"
         android:layout_width="290dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
         android:ems="10"
         android:fontFamily="sans-serif-condensed-medium"
-        android:inputType="textWebEmailAddress"
+        android:inputType="text"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -225,13 +226,13 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <EditText
-        android:id="@+id/boxEmail2"
+        android:id="@+id/boxConfirmarSenha"
         android:layout_width="290dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
         android:ems="10"
         android:fontFamily="sans-serif-condensed-medium"
-        android:inputType="textWebEmailAddress"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -239,19 +240,19 @@
         android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.706" />
 
     <EditText
-        android:id="@+id/boxEmail4"
+        android:id="@+id/boxSenhaLogin"
         android:layout_width="290dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
         android:ems="10"
         android:fontFamily="sans-serif-condensed-medium"
-        android:inputType="textWebEmailAddress"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -265,12 +266,11 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <Button
-        android:id="@+id/Loginbutton"
+        android:id="@+id/buttonLogin"
         android:layout_width="298dp"
         android:layout_height="54dp"
         android:background="@drawable/login_button"
         android:fontFamily="sans-serif-condensed-medium"
-        android:onClick="confirmarLogin"
         android:text="Acessar"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -306,8 +306,8 @@
         app:layout_constraintVertical_bias="0.797">
 
         <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
+            android:id="@+id/radioButtonFeminino"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="#FFFFFF"
             android:fontFamily="sans-serif-condensed-medium"
@@ -318,7 +318,7 @@
             android:textSize="18sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonMasculino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FFFFFF"

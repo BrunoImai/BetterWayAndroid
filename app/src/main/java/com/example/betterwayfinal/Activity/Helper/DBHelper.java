@@ -1,6 +1,8 @@
 package com.example.betterwayfinal.Activity.Helper;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -9,7 +11,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static int VERSION = 1;
+    public static int VERSION = 2;
     public static String NOME_DB = "BETTERWAY";
     public static String TABELA_CORDENADAS = "cordenadas";
     public static String TABELA_USUARIO = "USUARIO";
@@ -38,8 +40,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "nome VARCHAR(200) NOT NULL, " +
                 "email VARCHAR(200) NOT NULL," +
                 "senha VARCHAR(200) NOT NULL," +
-                "data_nasc DATETIME NOT NULL, " +
-                "sexo CHAR(1) NOT NULL, " +
+                "idade INT NOT NULL, " +
+                "sexo VARCHAR(20) NOT NULL, " +
                 "num_celular INT (15), " +
                 "endereco VARCHAR(200), " +
                 "bairro VARCHAR(90), " +
@@ -64,5 +66,40 @@ public class DBHelper extends SQLiteOpenHelper {
         }catch (Exception e){
             Log.i("INFO DB", "Erro ao atualizar App" + e.getMessage() );
         }
+
+        sql = "DROP TABLE IF EXISTS " + TABELA_USUARIO + " ;" ;
+
+        try {
+            db.execSQL( sql );
+            onCreate(db);
+            Log.i("INFO DB", "Sucesso ao atualizar App" );
+        }catch (Exception e){
+            Log.i("INFO DB", "Erro ao atualizar App" + e.getMessage() );
+        }
+    }
+
+    public Long cadastrarUsuarioBase(String nome, String email, String senha, int idade, String sexo){
+        SQLiteDatabase db = getWritableDatabase();
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("nome", nome);
+            cv.put("email", email);
+            cv.put("senha", senha);
+            cv.put("idade", idade);
+            cv.put("sexo", sexo);
+
+            return db.insert(TABELA_USUARIO, null, cv);
+
+    }
+
+    public boolean validarUsuario(String email, String senha){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABELA_USUARIO + " WHERE email = ? AND senha = ?", new String[]{email, senha});
+        cursor.close();
+
+        return cursor.getCount() > 0;
+
     }
 }
