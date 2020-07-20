@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static int VERSION = 2;
     public static String NOME_DB = "BETTERWAY";
-    public static String TABELA_CORDENADAS = "cordenadas";
+    public static String TABELA_COORDENADAS = "COORDENADAS";
     public static String TABELA_USUARIO = "USUARIO";
 
     public DBHelper(@Nullable Context context) {
@@ -22,15 +22,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABELA_CORDENADAS
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABELA_COORDENADAS
                 + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                " cordenadaX DOUBLE NOT NULL," +
-                " cordenadaY DOUBLE NOT NULL," +
-                " cordenadaZ DOUBLE NOT NULL," +
-                " tipoDeDesnivel VARCHAR(20) NOT NULL); ";
+                " coordenadaX DOUBLE NOT NULL," +
+                " coordenadaY DOUBLE NOT NULL," +
+                " coordenadaZ DOUBLE NOT NULL," +
+                " tipoDeDesnivel VARCHAR(20) NOT NULL," +
+                " latitude DOUBLE NOT NULL," +
+                " longitude DOUBLE NOT NULL); ";
         try {
             db.execSQL( sql );
-            Log.i("INFO DB", "Sucesso ao criar a tabela: " + TABELA_CORDENADAS);
+            Log.i("INFO DB", "Sucesso ao criar a tabela: " + TABELA_COORDENADAS);
         }catch (Exception e){
             Log.i("INFO DB", "Erro ao criar a tabela" + e.getMessage() );
         }
@@ -57,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS " + TABELA_CORDENADAS + " ;" ;
+        String sql = "DROP TABLE IF EXISTS " + TABELA_COORDENADAS + " ;" ;
 
         try {
             db.execSQL( sql );
@@ -97,9 +99,24 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABELA_USUARIO + " WHERE email = ? AND senha = ?", new String[]{email, senha});
-        cursor.close();
 
         return cursor.getCount() > 0;
+
+    }
+
+    public Long cadastrarCoordenadas(double coordenadaX, double coordenadaY, double coordenadaZ, String tipoDeDesnivel, double latitude, double longitude){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("coordenadaX", coordenadaX);
+        cv.put("coordenadaY", coordenadaY);
+        cv.put("coordenadaZ", coordenadaZ);
+        cv.put("tipoDeDesnivel", tipoDeDesnivel);
+        cv.put("latitude", latitude);
+        cv.put("longitude", longitude);
+
+        return db.insert(TABELA_COORDENADAS, null, cv);
 
     }
 }

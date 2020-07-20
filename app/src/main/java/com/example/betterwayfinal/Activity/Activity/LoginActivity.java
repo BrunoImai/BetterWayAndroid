@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                final String boxEmail = idboxemail.getText().toString();
-                final String boxSenha = idboxsenha.getText().toString();
+                 String boxEmail = idboxemail.getText().toString();
+                 String boxSenha = idboxsenha.getText().toString();
 
                 if (db.validarUsuario(boxEmail, boxSenha)){
                     Intent intent = new Intent(getApplicationContext(), MapaActivity.class);

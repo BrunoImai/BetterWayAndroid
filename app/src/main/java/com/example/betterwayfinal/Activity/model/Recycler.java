@@ -4,31 +4,33 @@ import java.io.Serializable;
 
 public class Recycler implements Serializable {
     private long id;
-    private String CordX;
-    private String CordY;
-    private String CordZ;
+    private double CordX;
+    private double CordY;
+    private double CordZ;
     private String tipoDeDesnivel;
+    private double latitude;
+    private double longitude;
 
-    public String getCordX() {
+    public double getCordX() {
         return CordX;
     }
-    public void setCordX(String cord) {
+    public void setCordX(double cord) {
         this.CordX = cord;
     }
 
 
-    public String getCordY() {
+    public double getCordY() {
         return CordY;
     }
-    public void setCordY(String cord) {
+    public void setCordY(double cord) {
         this.CordY = cord;
     }
 
 
-    public String getCordZ() {
+    public double getCordZ() {
         return CordZ;
     }
-    public void setCordZ(String cord) {
+    public void setCordZ(double cord) {
         this.CordZ = cord;
     }
 
@@ -46,5 +48,19 @@ public class Recycler implements Serializable {
     }
     public void setId(long id) {
         this.id = id;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double cord) {
+        this.latitude = cord;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double cord) {
+        this.longitude = cord;
     }
 }

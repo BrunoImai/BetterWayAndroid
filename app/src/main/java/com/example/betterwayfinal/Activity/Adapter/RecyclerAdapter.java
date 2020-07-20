@@ -35,10 +35,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Myview
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
 
         Recycler recycler = listaCord.get(position);
-        holder.cord.setText( recycler.getCordX() );
-        holder.cord.setText( recycler.getCordY() );
-        holder.cord.setText( recycler.getCordZ() );
+        holder.cord.setText((int) recycler.getCordX());
+        holder.cord.setText((int) recycler.getCordY());
+        holder.cord.setText((int) recycler.getCordZ());
         holder.cord.setText( recycler.gettipoDeDesnivel() );
+        holder.cord.setText((int) recycler.getLatitude());
+        holder.cord.setText((int) recycler.getLongitude());
 
     }
 
@@ -47,12 +49,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Myview
         return this.listaCord.size();
     }
 
-    public class MyviewHolder extends RecyclerView.ViewHolder{
+    public static class MyviewHolder extends RecyclerView.ViewHolder{
         TextView cord;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
-            cord = itemView.findViewById(R.id.textCord);
+            cord = itemView.findViewById(R.id.textViewRecycler);
         }
     }
 

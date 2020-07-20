@@ -27,10 +27,8 @@ public class CadastroActivity extends AppCompatActivity {
             Manifest.permission.CAMERA
     };
 
-    private ImageButton galeriaButton, cameraButton;
     private CircleImageView circleImageViewUsuario;
 
-    private Button confirmarButton;
     private EditText idboxEmail, idboxSenha, idboxConfirmarSenha, idboxIdadeString, idboxNome;
     private RadioButton radioButtonMasc, radioButtonFem;
 
@@ -41,8 +39,8 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        cameraButton = findViewById(R.id.cameraButton);
-        galeriaButton = findViewById(R.id.galeriaButton);
+        ImageButton cameraButton = findViewById(R.id.cameraButton);
+        ImageButton galeriaButton = findViewById(R.id.galeriaButton);
         circleImageViewUsuario = findViewById(R.id.imagemPerfil);
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +63,12 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
 
-        confirmarButton = findViewById(R.id.buttonLogin);
+        Button confirmarButton = findViewById(R.id.buttonLogin);
         idboxConfirmarSenha = findViewById(R.id.boxConfirmarSenha);
-        idboxEmail = findViewById(R.id.boxEmailLogin);
-        idboxSenha = findViewById(R.id.boxSenhaLogin);
+        idboxEmail = findViewById(R.id.boxEmailCadastro);
+        idboxSenha = findViewById(R.id.boxSenhaCadastro);
         idboxIdadeString = findViewById(R.id.boxIdade);
-        idboxNome = findViewById(R.id.boxEmailLogin);
+        idboxNome = findViewById(R.id.boxNomeCadastro);
 
         radioButtonFem = findViewById(R.id.radioButtonFeminino);
         radioButtonMasc = findViewById(R.id.radioButtonMasculino);

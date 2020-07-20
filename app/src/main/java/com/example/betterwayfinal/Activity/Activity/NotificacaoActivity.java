@@ -64,7 +64,7 @@ public class NotificacaoActivity extends AppCompatActivity {
         DBHelper db = new DBHelper( getApplicationContext() );
 
         ContentValues cv = new ContentValues();
-        db.getWritableDatabase().insert("cordenadas", null, cv);
+        db.getWritableDatabase().insert("coordenadas", null, cv);
 
         //Adicionando evento de clique
         recyclerView.addOnItemTouchListener(

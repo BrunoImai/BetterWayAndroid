@@ -68,11 +68,14 @@
         android:id="@+id/textViewCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
         android:text=" Cadastrar"
         android:textColor="#35A1D9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
@@ -132,23 +135,6 @@
         app:layout_constraintVertical_bias="0.622" />
 
     <EditText
-        android:id="@+id/boxSenhaLogin"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:inputType="textPassword"
-        android:textColor="#F8F8F8"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
-
-    <EditText
         android:id="@+id/boxEmailLogin"
         android:layout_width="290dp"
         android:layout_height="56dp"
@@ -167,6 +153,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.496" />
+
+    <EditText
+        android:id="@+id/boxSenhaLogin"
+        android:layout_width="290dp"
+        android:layout_height="56dp"
+        android:background="#00FFFFFF"
+        android:ems="10"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#F8F3F3"
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
 
     <ImageView
         android:id="@+id/imageView2"

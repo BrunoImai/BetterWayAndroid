@@ -22,4 +22,5 @@
     <string name="e_mail">E-mail</string>
     <string name="title_activity_mapa">Map</string>
     <string name="title_activity_mapa_teste">Map</string>
+    <string name="senha">Senha</string>
 </resources>

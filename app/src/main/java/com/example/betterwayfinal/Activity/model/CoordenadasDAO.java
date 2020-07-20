@@ -26,13 +26,15 @@ public class CoordenadasDAO implements ICordenadasDAO{
     public boolean salvar(Recycler recycler) {
 
         ContentValues cv = new ContentValues();
-        cv.put("tipoDeDesnivel", recycler.gettipoDeDesnivel());
         cv.put("cordenadaX", recycler.getCordX());
         cv.put("cordenadaY", recycler.getCordY());
         cv.put("cordenadaZ", recycler.getCordZ());
+        cv.put("tipoDeDesnivel", recycler.gettipoDeDesnivel());
+        cv.put("latitude", recycler.getCordZ());
+        cv.put("longitude", recycler.getCordZ());
 
         try {
-            escreve.insert(DBHelper.TABELA_CORDENADAS, null, cv );
+            escreve.insert(DBHelper.TABELA_COORDENADAS, null, cv );
             Log.i("INFO", "Tarefa salva com sucesso!");
         }catch (Exception e){
             Log.e("INFO", "Erro ao salvar tarefa " + e.getMessage() );
@@ -57,7 +59,7 @@ public class CoordenadasDAO implements ICordenadasDAO{
 
         List<Recycler> dados = new ArrayList<>();
 
-        String sql = "SELECT * FROM " + DBHelper.TABELA_CORDENADAS;
+        String sql = "SELECT * FROM " + DBHelper.TABELA_COORDENADAS;
         
         Cursor c = le.rawQuery(sql, null);
 
@@ -65,16 +67,20 @@ public class CoordenadasDAO implements ICordenadasDAO{
             Recycler recycler = new Recycler();
 
             long id = c.getLong( c.getColumnIndex("id"));
-            String CordX = c.getString( c.getColumnIndex("cordenadaX"));
-            String CordY = c.getString( c.getColumnIndex("cordenadaY"));
-            String CordZ = c.getString( c.getColumnIndex("cordenadaZ"));
+            double CordX = c.getDouble( c.getColumnIndex("cordenadaX"));
+            double CordY = c.getDouble( c.getColumnIndex("cordenadaY"));
+            double CordZ = c.getDouble( c.getColumnIndex("cordenadaZ"));
             String tipoDeDesnivel = c.getString( c.getColumnIndex("tipoDeDesnivel"));
+            double latitude = c.getDouble(c.getColumnIndex("latitude"));
+            double longitude = c.getDouble( c.getColumnIndex("longitude"));
 
             recycler.setId( id );
             recycler.setCordX(CordX);
             recycler.setCordY(CordY);
             recycler.setCordZ(CordZ);
             recycler.settipoDeDesnivel(tipoDeDesnivel);
+            recycler.setLatitude(latitude);
+            recycler.setLongitude(longitude);
 
             dados.add( recycler );
         }

@@ -37,6 +37,9 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private LocationListener locationListener;
 
+    public double latitude = 0.0;
+    public double longitude = 0.0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +93,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             public void onLocationChanged(Location location) {
                 Log.d("Localização do Usuário", "OnLocarionChanged: " + location.toString());
 
-                double latitude = location.getLatitude();
-                double longitude = location.getLongitude();
+                 latitude = location.getLatitude();
+                 longitude = location.getLongitude();
                 mMap.clear();
 
                 LatLng localDoUsuario = new LatLng(latitude, longitude);
@@ -145,6 +148,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                             0,
                             locationListener
                     );
+
+
                 }
             }
         }
