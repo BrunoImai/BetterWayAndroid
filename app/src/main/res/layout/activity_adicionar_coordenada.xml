@@ -7,42 +7,6 @@
     tools:context=".Activity.Activity.AdicionarCoordenada"
     android:background="#212733">
 
-    <RadioGroup
-        android:layout_width="158dp"
-        android:layout_height="65dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.628"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355">
-
-        <RadioButton
-            android:id="@+id/radioButtonBuraco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="#FFFFFF"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="Buraco"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FBFBFB"
-            android:textColorLink="#FFFFFF"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonLombada"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="#FFFFFF"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="Lombada"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textColorLink="#FFFFFF"
-            android:textSize="18sp" />
-    </RadioGroup>
-
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
@@ -101,10 +65,9 @@
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.403" />
 
     <TextView
         android:id="@+id/textY"
@@ -188,5 +151,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.241" />
+
+    <TextView
+        android:id="@+id/textViewTESTE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

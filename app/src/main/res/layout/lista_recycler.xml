@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textCord"
+        android:id="@+id/CoordenadaX"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="@string/cordenadas"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/CoordenadaY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/cordenadas"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/CoordenadaZ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/cordenadas"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Latitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/cordenadas"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/cordenadas"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
 </LinearLayout>
