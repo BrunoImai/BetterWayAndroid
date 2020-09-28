@@ -1,6 +1,5 @@
 package com.example.betterwayfinal.Activity.Activity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -62,9 +61,6 @@ public class NotificacaoActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         DBHelper db = new DBHelper( getApplicationContext() );
-
-        ContentValues cv = new ContentValues();
-        db.getWritableDatabase().insert("coordenadas", null, cv);
 
         //Adicionando evento de clique
         recyclerView.addOnItemTouchListener(

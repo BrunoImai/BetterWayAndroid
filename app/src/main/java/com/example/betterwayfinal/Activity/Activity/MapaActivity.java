@@ -95,6 +95,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
                  latitude = location.getLatitude();
                  longitude = location.getLongitude();
+
                 mMap.clear();
 
                 LatLng localDoUsuario = new LatLng(latitude, longitude);

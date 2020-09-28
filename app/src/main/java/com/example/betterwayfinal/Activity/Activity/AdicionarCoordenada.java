@@ -6,11 +6,13 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +21,22 @@ import com.example.betterwayfinal.Activity.Helper.DBHelper;
 import com.example.betterwayfinal.R;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.util.concurrent.ExecutionException;
+
 public class AdicionarCoordenada extends AppCompatActivity implements SensorEventListener {
     private static final String TAG = "DadosFragment";
 
-    private TextView ViewX,ViewY,ViewZ;
+    private TextView ViewX,ViewY,ViewZ,teste;
 
-    private RadioButton radioButtonLombada, radioButtonBuraco;
+    float sensorX,sensorY,sensorZ, ultimoX, ultimoY, ultimoZ;
 
-    float sensorX,sensorY,sensorZ;
+    private float diferencaX, diferncaY, diferencaZ;
+
+    private float limiarDeAgitacao = 5f;
+
+    private boolean primeiraVez = true;
+
+    private Vibrator vibrator;
 
     DBHelper db = new DBHelper(this);
 
@@ -41,11 +51,12 @@ public class AdicionarCoordenada extends AppCompatActivity implements SensorEven
         ViewY = findViewById(R.id.textViewCordY);
         ViewZ = findViewById(R.id.textViewCordZ);
 
-        radioButtonLombada = findViewById(R.id.radioButtonLombada);
-        radioButtonBuraco = findViewById(R.id.radioButtonBuraco);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
+        teste = findViewById(R.id.textViewTESTE);
         SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        assert sensorManager != null;
         Sensor acelerometro = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, acelerometro, SensorManager.SENSOR_DELAY_NORMAL);
         Log.d(TAG, "onCreate: Registrando listener do Acelerometro ");
@@ -80,17 +91,16 @@ public class AdicionarCoordenada extends AppCompatActivity implements SensorEven
         Button buttonEnviarCoordenada = findViewById(R.id.buttonSalvarCoordenada);
         buttonEnviarCoordenada.setOnClickListener(new View.OnClickListener() {
             @Override
-            
             public void onClick(View v) {
-                
-                String tipoDeDesnivel = "";
-                if( radioButtonBuraco.isChecked() ){
-                    tipoDeDesnivel = "Buraco";
-                }else if(radioButtonLombada.isChecked()){
-                    tipoDeDesnivel = "Lombada";
+                http service = new http(teste.getText().toString());
+                try {
+                    com.example.betterwayfinal.Activity.Helper.teste retorno = service.execute().get();
+                    teste.setText(retorno.toString());
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                
-                db.cadastrarCoordenadas(sensorX,sensorY,sensorZ, tipoDeDesnivel, mp.latitude, mp.longitude);
             }
         });
     }
@@ -102,19 +112,38 @@ public class AdicionarCoordenada extends AppCompatActivity implements SensorEven
         sensorY = event.values[1];
         sensorZ = event.values[2];
 
-        String  x = String.valueOf(event.values[0]);
-        String  y = String.valueOf(event.values[1]);
-        String  z = String.valueOf(event.values[2]);
+        ViewX.setText(String.valueOf(event.values[0]));
+        ViewY.setText(String.valueOf(event.values[1]));
+        ViewZ.setText(String.valueOf(event.values[2]));
 
-        ViewX.setText(x);
-        ViewY.setText(y);
-        ViewZ.setText(z);
+        if (!primeiraVez){
+
+            float diferencaX = Math.abs(ultimoX - sensorX);
+            float diferencaY = Math.abs(ultimoX - sensorY);
+            float diferencaZ = Math.abs(ultimoX - sensorZ);
+
+            if ((diferencaX > limiarDeAgitacao && diferencaY > limiarDeAgitacao) ||
+                (diferencaX > limiarDeAgitacao && diferencaZ > limiarDeAgitacao) ||
+                    (diferencaY > limiarDeAgitacao && diferencaZ > limiarDeAgitacao))
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                    db.cadastrarCoordenadas(sensorX,sensorY,sensorZ, mp.latitude, mp.longitude);
+                }else {
+                    vibrator.vibrate(500);
+                }
+            }
+        }
+
+        ultimoX = sensorX;
+        ultimoY = sensorY;
+        ultimoZ = sensorZ;
+
+        primeiraVez = false;
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
-
-
 }

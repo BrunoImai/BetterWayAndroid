@@ -7,7 +7,6 @@ public class Recycler implements Serializable {
     private double CordX;
     private double CordY;
     private double CordZ;
-    private String tipoDeDesnivel;
     private double latitude;
     private double longitude;
 
@@ -18,7 +17,6 @@ public class Recycler implements Serializable {
         this.CordX = cord;
     }
 
-
     public double getCordY() {
         return CordY;
     }
@@ -26,22 +24,12 @@ public class Recycler implements Serializable {
         this.CordY = cord;
     }
 
-
     public double getCordZ() {
         return CordZ;
     }
     public void setCordZ(double cord) {
         this.CordZ = cord;
     }
-
-
-    public String gettipoDeDesnivel() {
-        return tipoDeDesnivel;
-    }
-    public void settipoDeDesnivel(String cord) {
-        this.tipoDeDesnivel = cord;
-    }
-
 
     public long getId() {
         return id;

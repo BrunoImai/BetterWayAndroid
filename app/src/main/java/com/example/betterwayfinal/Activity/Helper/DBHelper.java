@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static int VERSION = 2;
+    public static int VERSION = 4;
     public static String NOME_DB = "BETTERWAY";
     public static String TABELA_COORDENADAS = "COORDENADAS";
     public static String TABELA_USUARIO = "USUARIO";
@@ -27,7 +27,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 " coordenadaX DOUBLE NOT NULL," +
                 " coordenadaY DOUBLE NOT NULL," +
                 " coordenadaZ DOUBLE NOT NULL," +
-                " tipoDeDesnivel VARCHAR(20) NOT NULL," +
                 " latitude DOUBLE NOT NULL," +
                 " longitude DOUBLE NOT NULL); ";
         try {
@@ -104,7 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Long cadastrarCoordenadas(double coordenadaX, double coordenadaY, double coordenadaZ, String tipoDeDesnivel, double latitude, double longitude){
+    public Long cadastrarCoordenadas(double coordenadaX, double coordenadaY, double coordenadaZ, double latitude, double longitude){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -112,7 +111,6 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("coordenadaX", coordenadaX);
         cv.put("coordenadaY", coordenadaY);
         cv.put("coordenadaZ", coordenadaZ);
-        cv.put("tipoDeDesnivel", tipoDeDesnivel);
         cv.put("latitude", latitude);
         cv.put("longitude", longitude);
 

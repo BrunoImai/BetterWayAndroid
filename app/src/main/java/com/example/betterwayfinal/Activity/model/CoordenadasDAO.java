@@ -29,7 +29,6 @@ public class CoordenadasDAO implements ICordenadasDAO{
         cv.put("cordenadaX", recycler.getCordX());
         cv.put("cordenadaY", recycler.getCordY());
         cv.put("cordenadaZ", recycler.getCordZ());
-        cv.put("tipoDeDesnivel", recycler.gettipoDeDesnivel());
         cv.put("latitude", recycler.getCordZ());
         cv.put("longitude", recycler.getCordZ());
 
@@ -67,10 +66,9 @@ public class CoordenadasDAO implements ICordenadasDAO{
             Recycler recycler = new Recycler();
 
             long id = c.getLong( c.getColumnIndex("id"));
-            double CordX = c.getDouble( c.getColumnIndex("cordenadaX"));
-            double CordY = c.getDouble( c.getColumnIndex("cordenadaY"));
-            double CordZ = c.getDouble( c.getColumnIndex("cordenadaZ"));
-            String tipoDeDesnivel = c.getString( c.getColumnIndex("tipoDeDesnivel"));
+            double CordX = c.getDouble( c.getColumnIndex("coordenadaX"));
+            double CordY = c.getDouble( c.getColumnIndex("coordenadaY"));
+            double CordZ = c.getDouble( c.getColumnIndex("coordenadaZ"));
             double latitude = c.getDouble(c.getColumnIndex("latitude"));
             double longitude = c.getDouble( c.getColumnIndex("longitude"));
 
@@ -78,7 +76,6 @@ public class CoordenadasDAO implements ICordenadasDAO{
             recycler.setCordX(CordX);
             recycler.setCordY(CordY);
             recycler.setCordZ(CordZ);
-            recycler.settipoDeDesnivel(tipoDeDesnivel);
             recycler.setLatitude(latitude);
             recycler.setLongitude(longitude);
 

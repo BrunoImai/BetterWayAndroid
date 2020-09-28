@@ -35,12 +35,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Myview
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
 
         Recycler recycler = listaCord.get(position);
-        holder.cord.setText((int) recycler.getCordX());
-        holder.cord.setText((int) recycler.getCordY());
-        holder.cord.setText((int) recycler.getCordZ());
-        holder.cord.setText( recycler.gettipoDeDesnivel() );
-        holder.cord.setText((int) recycler.getLatitude());
-        holder.cord.setText((int) recycler.getLongitude());
+        String cordxS =  Double.toString(recycler.getCordX());
+        String cordyS =  Double.toString(recycler.getCordY());
+        String cordzS =  Double.toString(recycler.getCordZ());
+        String latS =  Double.toString(recycler.getLatitude());
+        String lonS =  Double.toString(recycler.getLongitude());
+
+        holder.cordx.setText(cordxS);
+        holder.cordy.setText(cordyS);
+        holder.cordz.setText(cordzS);
+        holder.lat.setText(latS);
+        holder.lon.setText(lonS);
 
     }
 
@@ -50,11 +55,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Myview
     }
 
     public static class MyviewHolder extends RecyclerView.ViewHolder{
-        TextView cord;
+        TextView cordx;
+        TextView cordy;
+        TextView cordz;
+        TextView lat;
+        TextView lon;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
-            cord = itemView.findViewById(R.id.textViewRecycler);
+            cordx = itemView.findViewById(R.id.CoordenadaX);
+            cordy = itemView.findViewById(R.id.CoordenadaY);
+            cordz = itemView.findViewById(R.id.CoordenadaZ);
+            lat = itemView.findViewById(R.id.Latitude);
+            lon = itemView.findViewById(R.id.Longitude);
         }
     }
 
